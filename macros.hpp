@@ -2,10 +2,10 @@
 #define _MCR_HPP_
 
 	// PARAMETRIZAÇÃO
-	#define M_SIZE (unsigned)9 // Tamanho da Matriz
+	#define M_SIZE (unsigned)4 // Tamanho da Matriz
     #define RND_RNG (unsigned)10 // Tamanho do intervalo de valores aleatórios
     #define RND_MIN (int)1 // Menor valor do intervalo
-    
+
 
     // Boolean
     #ifdef TRUE
@@ -21,7 +21,7 @@
 	#define FALSE 0
 	#endif // FALSE def
 
-	
-    
+
+
 
 #endif //_MCR_HPP_

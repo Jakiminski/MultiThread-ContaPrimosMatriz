@@ -13,3 +13,5 @@ Dada uma matriz de números naturais aleatórios verificar quantos números prim
 - [ ] Parametrizar Threads
 - [ ] Medir tempo de processador serial
 - [ ] Medir tempo de processador para as threads
+
+[GNU GProf](https://www.ibm.com/developerworks/br/local/linux/gprof_introduction/index.html)

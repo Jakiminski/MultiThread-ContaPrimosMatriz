@@ -7,7 +7,7 @@
 	#include <clocale>
     #include <ctime>
     #include <cassert>
-    //#include <pthread.h>
+    #include <pthread.h>
 
 	#include "macros.hpp"
 	#include "util.hpp"

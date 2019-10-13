@@ -5,7 +5,7 @@
     int randRange(unsigned range, int min); // núm aleatório
 
     unsigned** newMatrix(unsigned tam); // Aloca matriz com números aleatórios
-    void showMatrix(unsigned**mat); //Imprime a matriz
+    void showMatrix(unsigned**mat); // Print para matrizes pequenas ou para depuração
     int delMatrix (unsigned** mat); // Deleta matriz
 
 

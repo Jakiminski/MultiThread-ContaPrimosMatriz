@@ -20,21 +20,24 @@ int sTempo = 0, pTempo = 0;
 
 
 int main() {
-
+	
+	/**Gerar matriz com números aleatórios*/
     setlocale(LC_ALL,"Portuguese");
     matriz = newMatrix(M_SIZE);
     assert(matriz!=NULL);
-    showMatrix(matriz);
-    /**Execução Serial
-    */
+#if PRINT
+    showMatrix(matriz); 
+#endif
+    /**Execução Serial*/
     primeNumCountSerial();
-    cout << "[S]: A matriz possui " << contaPrimos << " números primos. Tempo de Execução: " << sTempo << " segundos." << endl;
+    cout << "[S]: A matriz possui " << contaPrimos << " números primos." << endl;
+	cout << " Tempo de Execução: " << sTempo << " segundos." << endl;
 
-    /**Execução Paralela
-    */
+    /**Execução Paralela*/
     primeNumCountParallel();
-    cout << "[P]: A matriz possui " << contaPrimos << " números primos. Tempo de Execução: " << pTempo << " segundos." << endl;
-
+    cout << "[P]: A matriz possui " << contaPrimos << " números primos." << endl;
+	cout << " Tempo de Execução: " << pTempo << " segundos." << endl;
+	/**desalocar matriz*/
     assert(delMatrix(matriz));
 
     return 0;

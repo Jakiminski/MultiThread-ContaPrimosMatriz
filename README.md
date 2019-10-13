@@ -9,8 +9,10 @@ Dada uma matriz de números naturais aleatórios verificar quantos números prim
 - [X] Matriz de inteiros positivos com valores aleatórios
  
 ### Implementar Execução por Threads
-- [ ] Particionar Matriz em Blocos
-- [ ] Parametrizar Threads
+- [X] Particionar Matriz em Blocos
+- [X] Parametrizar Threads
+- [ ] Implementar Rotina
+- [ ] Definir qnt. de Threads e atuação de cada uma (vide parâmetros)
 - [ ] Medir tempo de processador serial
 - [ ] Medir tempo de processador para as threads
 

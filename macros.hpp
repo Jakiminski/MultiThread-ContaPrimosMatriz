@@ -1,11 +1,6 @@
 #ifndef _MCR_HPP_
 #define _MCR_HPP_
 
-	// PARAMETRIZAÇÃO
-	#define M_SIZE (unsigned)4 // Tamanho da Matriz
-    #define RND_RNG (unsigned)10 // Tamanho do intervalo de valores aleatórios
-    #define RND_MIN (int)1 // Menor valor do intervalo
-
 
     // Boolean
     #ifdef TRUE
@@ -21,7 +16,20 @@
 	#define FALSE 0
 	#endif // FALSE def
 
-
+	// PARAMETRIZAÇÃO
+	
+	// MATRIZ
+	#define M_SIZE (unsigned) 10 // Tamanho da Matriz
+    #define PRINT FALSE // Printar a matriz? TRUE:FALSE
+	
+	// NÚMEROS ALEATÓRIOS
+	#define RND_RNG (unsigned) 10 // Tamanho do intervalo de valores aleatórios
+    #define RND_MIN (int) 1 // Menor valor do intervalo
+	
+	// BLOCOS DA MATRIZ (Threads)
+	//Obs: M_SIZE deve ser divisivel por HEIGHT e WIDTH
+	#define HEIGHT (unsigned) 2 // Altura
+	#define WIDTH (unsigned) 2 // Largura
 
 
 #endif //_MCR_HPP_

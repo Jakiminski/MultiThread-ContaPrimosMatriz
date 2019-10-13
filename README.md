@@ -15,3 +15,5 @@ Dada uma matriz de números naturais aleatórios verificar quantos números prim
 - [ ] Medir tempo de processador para as threads
 
 [GNU GProf](https://www.ibm.com/developerworks/br/local/linux/gprof_introduction/index.html)
+
+[Repl.it com o Repositório](https://repl.it/@JackJonas/MultiThread-ContaPrimosMatriz)

@@ -30,15 +30,11 @@ int main() {
 #endif
     /**Execução Serial*/
     primeNumCountSerial();
-    cout << "[S]: A matriz possui " << contaPrimos << " números primos." << endl;
-	cout << " Tempo de Execução: " << sTempo << " segundos." << endl;
-
+   
     /**Execução Paralela*/
     primeNumCountParallel();
-    cout << "[P]: A matriz possui " << contaPrimos << " números primos." << endl;
-	cout << " Tempo de Execução: " << pTempo << " segundos." << endl;
-	/**desalocar matriz*/
+	
+	/**desalocar matriz e encerrar todas as threads*/
     assert(delMatrix(matriz));
-
-    return 0;
+	pthread_exit(NULL);
 }

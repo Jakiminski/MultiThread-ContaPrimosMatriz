@@ -13,7 +13,7 @@
     void primeNumCountParallel(void);
 
 	// Rotina a ser executada em Thread(s)
-void* rotina(void* args);
+	void* rotina(void* args);
 
 #endif //_CNT_HPP_
 

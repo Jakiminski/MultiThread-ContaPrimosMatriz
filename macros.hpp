@@ -17,19 +17,30 @@
 	#endif // FALSE def
 
 	// PARAMETRIZAÇÃO
+	/*
+	*	Exemplos simples:
+	*	Matriz 5x5 e blocos 1x1
+	*	Matriz 9x9 e blocos 3x3
+	*	Matriz 9x9 e blocos 9x3
+	*	Matriz 10x10 e blocos 5x2
+	*	Matriz 16x16 e blocos 8x8
+	*	Matriz 16x16 e blocos 8x4
+	*	Matriz 16x16 e blocos 2x4
+	*	
+	* Sugestão: Usar matrizes com dimensões que sejam múltiplas das escolhas acima.
+	*/
 	
 	// MATRIZ
-	#define M_SIZE (unsigned) 10 // Tamanho da Matriz
+	#define M_SIZE (unsigned) 32 // Tamanho da Matriz
     #define PRINT FALSE // Printar a matriz? TRUE:FALSE
 	
+	// BLOCOS DA MATRIZ (Threads)
+	//Obs: M_SIZE deve ser divisivel por HEIGHT e WIDTH
+	#define HEIGHT (unsigned) 8 // Altura
+	#define WIDTH (unsigned) 4 // Largura
+
 	// NÚMEROS ALEATÓRIOS
 	#define RND_RNG (unsigned) 10 // Tamanho do intervalo de valores aleatórios
     #define RND_MIN (int) 1 // Menor valor do intervalo
 	
-	// BLOCOS DA MATRIZ (Threads)
-	//Obs: M_SIZE deve ser divisivel por HEIGHT e WIDTH
-	#define HEIGHT (unsigned) 2 // Altura
-	#define WIDTH (unsigned) 2 // Largura
-
-
 #endif //_MCR_HPP_

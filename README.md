@@ -12,7 +12,7 @@ Dada uma matriz de números naturais aleatórios verificar quantos números prim
 - [X] Particionar Matriz em Blocos
 - [X] Parametrizar Threads
 - [ ] Implementar Rotina
-- [ ] Definir qnt. de Threads e atuação de cada uma (vide parâmetros)
+- [X] Definir qnt. de Threads e atuação de cada uma (vide parâmetros)
 - [ ] Medir tempo de processador serial
 - [ ] Medir tempo de processador para as threads
 

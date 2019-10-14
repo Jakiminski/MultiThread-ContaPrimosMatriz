@@ -8,7 +8,7 @@
 	}BlocoArgs;
 
 	// Algoritmos para contagem de números primos
-	void countPrime(unsigned x0, unsigned x1, unsigned y0, unsigned y1);
+	int countPrime(unsigned x0, unsigned x1, unsigned y0, unsigned y1);
     void primeNumCountSerial(void);
     void primeNumCountParallel(void);
 

@@ -31,13 +31,14 @@
 	*/
 	
 	// MATRIZ
-	#define M_SIZE (unsigned) 32 // Tamanho da Matriz
+	#define M_SIZE (unsigned) 9 // Tamanho da Matriz
     #define PRINT FALSE // Printar a matriz? TRUE:FALSE
 	
 	// BLOCOS DA MATRIZ (Threads)
+	// (x e y estão trocados no plano cartesiano)
 	//Obs: M_SIZE deve ser divisivel por HEIGHT e WIDTH
-	#define HEIGHT (unsigned) 8 // Altura
-	#define WIDTH (unsigned) 4 // Largura
+	#define HEIGHT (unsigned) 3 // Altura 
+	#define WIDTH (unsigned) 3 // Largura
 
 	// NÚMEROS ALEATÓRIOS
 	#define RND_RNG (unsigned) 10 // Tamanho do intervalo de valores aleatórios

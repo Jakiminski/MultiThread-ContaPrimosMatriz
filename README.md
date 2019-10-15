@@ -3,7 +3,10 @@ Dada uma matriz de números naturais aleatórios verificar quantos números prim
 
 ## Compilação
 :bowtie: 
-Foi usado o compilador de C++ *Clang version 7.0.0.3~Ubuntu0.18.04.1*. Pode-se também usar o compilador *g++ (tdm-1) 4.9.2* ou similar para gerar o arquivo executável na sua máquina. No seu terminal, compile o programa usando o seguinte comando no diretório onde se encontra o código-fonte: ```g++ -pg main.cpp count.cpp util.cpp -o run -lpthread```. Uma vez compilado, rode o arquivo executável com o nome ```run.exe``` ou equivalente na sua máquina.
+Foi usado o compilador de C++ *Clang version 7.0.0.3~Ubuntu0.18.04.1*. Pode-se também usar o compilador *g++ (tdm-1) 4.9.2* ou similar para gerar o arquivo executável na sua máquina. No seu terminal, compile o programa usando o seguinte comando no diretório onde se encontra o código-fonte:
+Windows: ```g++ -pg main.cpp count.cpp util.cpp -o run -lpthread```.
+Linux:  ```g++ -o run -pg main.cpp util.cpp count.cpp -lpthread```.
+Uma vez compilado, rode o arquivo executável com o nome ```run.exe``` ou equivalente na sua máquina.
 
 ## Licença
 [GNU General Public License v3.0](/LICENSE)

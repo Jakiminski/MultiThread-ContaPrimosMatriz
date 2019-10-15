@@ -23,18 +23,30 @@ int main() {
 	
 	/**Gerar matriz com números aleatórios*/
     setlocale(LC_ALL,"Portuguese");
+    cout << "Criando matriz...\n";
     matriz = newMatrix();
+    cout << "Matriz criada!\n";
     assert(matriz!=NULL);
 #if PRINT
     showMatrix(matriz); 
 #endif
+
+#if SERIAL_COUNT
     /**Execução Serial*/
+    cout << "\nContagem Serial...\n";
     primeNumCountSerial();
-   
+    cout << "Tempo de execução " << sTempo << " segundos." << endl;
+#endif
+
+#if PARALLEL_COUNT 
     /**Execução Paralela*/
+    cout << "\nContagem com threads...\n";
     primeNumCountParallel();
-	
-	/**desalocar matriz e encerrar todas as threads*/
+    cout << "Tempo de execução " << pTempo << " segundos." << endl;
+#endif
+ 
+    /**desalocar matriz e encerrar todas as threads*/
     assert(delMatrix(matriz));
 	pthread_exit(NULL);
+
 }

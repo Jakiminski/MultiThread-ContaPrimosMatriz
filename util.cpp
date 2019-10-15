@@ -17,17 +17,17 @@ int randRange(unsigned range, int min){
         return rand() % range + min;
 }
 
-unsigned** newMatrix(unsigned tam){
+unsigned** newMatrix(void){
     srand(time(NULL)); // Use rand_Range(range,min)
     int status = TRUE;
-    if (tam>0){
-        unsigned** mat = new unsigned*[tam];
+    if (M_HEIGHT>0 && M_WIDTH>0){
+        unsigned** mat = new unsigned*[M_HEIGHT];
         if (mat!=NULL){
             unsigned i=0,j=0;
-            for (i=0; i<tam; i++){
-                mat[i] = new unsigned[tam];
+            for (i=0; i<M_HEIGHT; i++){
+                mat[i] = new unsigned[M_WIDTH];
                 if (mat[i]!=NULL){
-                    for (j=0; j<tam; j++){
+                    for (j=0; j<M_WIDTH; j++){
                         mat[i][j] = randRange((unsigned)RND_RNG,RND_MIN);
                     }
                 }else{
@@ -53,8 +53,8 @@ unsigned** newMatrix(unsigned tam){
 
 void showMatrix(unsigned**mat){
     if (mat!=NULL){
-        for (unsigned i=0; i<M_SIZE; i++){
-            for (unsigned j=0; j<M_SIZE; j++){
+        for (unsigned i=0; i<M_HEIGHT; i++){
+            for (unsigned j=0; j<M_WIDTH; j++){
                 if (mat[i][j]<10){
                     cout << 00;
                 }else if (mat[i][j]>=10 && mat[i][j]<100){
@@ -72,7 +72,7 @@ void showMatrix(unsigned**mat){
 
 int delMatrix (unsigned** mat){
     if (mat!=NULL){
-        for (unsigned i=0; i<M_SIZE; i++){
+        for (unsigned i=0; i<M_HEIGHT; i++){
             delete[] mat[i];
         }
         delete[] mat;

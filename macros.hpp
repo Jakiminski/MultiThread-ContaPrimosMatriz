@@ -31,14 +31,15 @@
 	*/
 	
 	// MATRIZ
-	#define M_HEIGHT (unsigned) 2000 // Altura da Matriz
-	#define M_WIDTH (unsigned) 1000 // Largura da Matriz
+	#define M_HEIGHT (unsigned) 9 // Altura da Matriz
+	#define M_WIDTH (unsigned) 9 // Largura da Matriz
     	
 	
 	// BLOCOS DA MATRIZ (Threads)
 	// (x e y estão trocados no plano cartesiano)
 	//Obs: M_SIZE deve ser divisivel por HEIGHT e WIDTH
-	#define HEIGHT (unsigned) 100 // Altura 
+        #define MAX_THREADS 3 // Qnt. Máxima de Threads
+	#define HEIGHT (unsigned) 200 // Altura 
 	#define WIDTH (unsigned) 200 // Largura
 
 	// NÚMEROS ALEATÓRIOS
@@ -46,7 +47,7 @@
     	#define RND_MIN (int) 0 // Menor valor do intervalo
 	
 	// DEPURAÇÃO
-	#define PRINT FALSE // Printar a matriz? TRUE:FALSE
+	#define PRINT TRUE // Printar a matriz? TRUE:FALSE
 	#define SERIAL_COUNT TRUE // Fazer contagem Serialmente? TRUE:FALSE 
 	#define PARALLEL_COUNT TRUE // Fazer contagem Paralelamente? TRUE:FALSE
 	

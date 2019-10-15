@@ -43,17 +43,15 @@ void primeNumCountSerial(void){
 //Thread
 pthread_mutex_t mutex;
 unsigned xPrev, yPrev;
-int numThreads = (int) (M_HEIGHT*M_WIDTH)/(HEIGHT*WIDTH);
 
 
 void primeNumCountParallel(void){
 
     	contaPrimos = 0; // Reseta Contador
 
-	pthread_t* threads = new pthread_t [numThreads];
-	BlocoArgs* b = new BlocoArgs [numThreads];
-	numThreads = 0; 
-	int k = 0;// Conta Threads; k <= numThreads
+	pthread_t* threads = new pthread_t [MAX_THREADS];
+	BlocoArgs* b = new BlocoArgs [MAX_THREADS];
+	int numThreads = 0; // Conta Threads [0,MAX_THREADS]
 	int status;
 	// Threads, respectivas rotinas e o(s) Mutex(es)
 	
@@ -62,29 +60,30 @@ void primeNumCountParallel(void){
 
 	
 	// Cria Threads
-	pTempo = time(NULL);	
+	pTempo = time(NULL);
+		
 	for (int i=0; i<M_HEIGHT; i+=HEIGHT){
 		for (int j=0; j<M_WIDTH; j+=WIDTH){
 			// BlocoArgs; submatriz por thread
 			
-			k = numThreads;
-			b[k].x = i;
-			b[k].y = j;
-			b[k].threadId = k;
-			xPrev = b[k].x, yPrev = b[k].y;
-			status = pthread_create(&threads[k],NULL,rotina,&b[k]);
+			b[numThreads].x = i;
+			b[numThreads].y = j;
+			b[numThreads].threadId = numThreads;
+			xPrev = b[numThreads].x, yPrev = b[numThreads].y;
+			status = pthread_create(&threads[numThreads],NULL,rotina,&b[numThreads]);
 			if (status){
 				exit(-1);			
 			}
 			numThreads++;
-			//cout << numThreads << " threads criadas ." << endl; 
+			cout << numThreads << " threads criadas ." << endl; 
 		}
 	}
+	/**/
 	//cout << "Total de Threads: " << numThreads << endl;
 
 	
 
-	for (k=0; k<numThreads; k++){
+	for (int k=0; k<numThreads; k++){
 		pthread_join(threads[k],NULL);
 	}
 	pTempo = time(NULL) - pTempo;

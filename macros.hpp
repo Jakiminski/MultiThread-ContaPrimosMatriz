@@ -31,18 +31,18 @@
 	*/
 	
 	// MATRIZ
-	#define M_HEIGHT (unsigned) 50 // Altura da Matriz
-	#define M_WIDTH (unsigned) 18 // Largura da Matriz
+	#define M_HEIGHT (unsigned) 2000 // Altura da Matriz
+	#define M_WIDTH (unsigned) 1800 // Largura da Matriz
     	#define PRINT FALSE // Printar a matriz? TRUE:FALSE
 	
 	// BLOCOS DA MATRIZ (Threads)
 	// (x e y estão trocados no plano cartesiano)
 	//Obs: M_SIZE deve ser divisivel por HEIGHT e WIDTH
-	#define HEIGHT (unsigned) 2 // Altura 
-	#define WIDTH (unsigned) 3 // Largura
+	#define HEIGHT (unsigned) 500 // Altura 
+	#define WIDTH (unsigned) 300 // Largura
 
 	// NÚMEROS ALEATÓRIOS
-	#define RND_RNG (unsigned) 10 // Tamanho do intervalo de valores aleatórios
-    #define RND_MIN (int) 1 // Menor valor do intervalo
+	#define RND_RNG (unsigned) 29999 // Tamanho do intervalo de valores aleatórios
+    	#define RND_MIN (int) 0 // Menor valor do intervalo
 	
 #endif //_MCR_HPP_

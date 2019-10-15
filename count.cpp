@@ -28,7 +28,6 @@ void primeNumCountSerial(void){
 	contaPrimos = countPrime(0,M_HEIGHT,0,M_WIDTH);
 
 	cout << "[S]: A matriz possui " << contaPrimos << " números primos." << endl;
-	cout << " Tempo de Execução: " << sTempo << " segundos." << endl << endl;
 
 }
 
@@ -83,7 +82,7 @@ void primeNumCountParallel(void){
 	}
 
 	cout << "[P]: A matriz possui " << contaPrimos << " números primos." << endl;
-	cout << " Tempo de Execução: " << pTempo << " segundos." << endl;
+
 }
 
 

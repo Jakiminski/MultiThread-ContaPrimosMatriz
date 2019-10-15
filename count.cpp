@@ -25,7 +25,7 @@ int countPrime(unsigned x0, unsigned x1, unsigned y0, unsigned y1){
 
 void primeNumCountSerial(void){
 
-	contaPrimos = countPrime(0,M_SIZE,0,M_SIZE);
+	contaPrimos = countPrime(0,M_HEIGHT,0,M_WIDTH);
 
 	cout << "[S]: A matriz possui " << contaPrimos << " números primos." << endl;
 	cout << " Tempo de Execução: " << sTempo << " segundos." << endl << endl;
@@ -41,12 +41,12 @@ void primeNumCountSerial(void){
 //Thread
 pthread_mutex_t mutex;
 unsigned xPrev, yPrev;
-int numThreads = (int) (M_SIZE*M_SIZE)/(HEIGHT*WIDTH);
+int numThreads = (int) (M_HEIGHT*M_WIDTH)/(HEIGHT*WIDTH);
 
 
 void primeNumCountParallel(void){
 
-    contaPrimos = 0; // Reseta Contador
+    	contaPrimos = 0; // Reseta Contador
 
 	pthread_t* threads = new pthread_t [numThreads];
 	BlocoArgs* b = new BlocoArgs [numThreads];
@@ -60,8 +60,8 @@ void primeNumCountParallel(void){
 
 	
 	// Cria Threads
-	for (int i=0; i<M_SIZE; i+=HEIGHT){
-		for (int j=0; j<M_SIZE; j+=WIDTH){
+	for (int i=0; i<M_HEIGHT; i+=HEIGHT){
+		for (int j=0; j<M_WIDTH; j+=WIDTH){
 			// BlocoArgs; submatriz por thread
 			
 			k = numThreads;

@@ -9,8 +9,8 @@
 
 	// Algoritmos para contagem de números primos
 	int countPrime(unsigned x0, unsigned x1, unsigned y0, unsigned y1);
-    void primeNumCountSerial(void);
-    void primeNumCountParallel(void);
+    	void primeNumCountSerial(void);
+    	void primeNumCountParallel(void);
 
 	// Rotina a ser executada em Thread(s)
 	void* rotina(void* args);

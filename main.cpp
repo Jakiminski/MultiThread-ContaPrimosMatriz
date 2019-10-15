@@ -23,7 +23,7 @@ int main() {
 	
 	/**Gerar matriz com números aleatórios*/
     setlocale(LC_ALL,"Portuguese");
-    matriz = newMatrix(M_SIZE);
+    matriz = newMatrix();
     assert(matriz!=NULL);
 #if PRINT
     showMatrix(matriz); 

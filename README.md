@@ -4,8 +4,8 @@ Dada uma matriz de números naturais aleatórios verificar quantos números prim
 ## Compilação
 :bowtie: 
 Foi usado o compilador de C++ *g++ (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0* (Ubuntu). Pode-se também usar o compilador *g++ (tdm-1) 4.9.2* (Windows) ou similar para gerar o arquivo executável na sua máquina. No seu terminal, compile o programa usando o seguinte comando no diretório onde se encontra o código-fonte:
-Windows: ```g++ -pg main.cpp count.cpp util.cpp -o run -lpthread```.
-Linux:  ```g++ -o run -pg main.cpp util.cpp count.cpp -lpthread```.
+Windows: ```g++ main.cpp count.cpp util.cpp -o run -lpthread```.
+Linux:  ```g++ -o run main.cpp util.cpp count.cpp -lpthread```.
 Uma vez compilado, rode o arquivo executável com o nome ```run.exe``` ou equivalente na sua máquina.
 
 ## Licença
@@ -23,13 +23,12 @@ Uma vez compilado, rode o arquivo executável com o nome ```run.exe``` ou equiva
 - [X] Parametrizar Threads
 - [X] Implementar Rotina
 - [X] Definir qnt. de Threads e atuação de cada uma (vide parâmetros)
-- [ ] Medir tempo de processador serial
-- [ ] Medir tempo de processador para as threads
+- [X] Medir tempo de processador serial
+- [X] Medir tempo de processador para as threads
 
 
 ## GitHub
 :octocat: [MultiThread-ContaPrimosMatriz](https://github.com/Jakiminski/MultiThread-ContaPrimosMatriz/)
 
 ## *GNU's Processor Time Analysis*
-* Tempo de processamento usando [GNU GProf (site da IBM)](https://www.ibm.com/developerworks/br/local/linux/gprof_introduction/index.html);
 * [The GNU C Library -Date and Time](https://www.gnu.org/software/libc/manual/html_node/Date-and-Time.html).

@@ -36,10 +36,11 @@ Uma vez compilado, rode o arquivo executável com o nome ```ContaPrimosMatriz```
 - [X] Medir tempo de processador para as threads
 
 ## Issues
-- Parametrização do Número de Threads não foi implementada de fato. **Foi criada  uma thread para cada bloco da matriz**, pois quando uma thread percorre mais de um bloco ocorre um dos dois problemas, que não foram solucionados corretamente:
+- Parametrização do Número de Threads não foi implementada de fato. **Foi criada  uma thread para cada bloco da matriz**, pois quando uma thread percorre mais de um bloco ocorre um dos dois problemas, que não foram solucionados corretamente (vide _branch_ 'separate-threads'):
 1. A última coluna de blocos não tem todos os elementos contados.
 2. Todos os elementos são contados, porém ocorre falha de segmentação. 
 Dessa forma, no quesito tempo, há um efeito totalmente indesejado: **a atual execução com threads passa a ter um tempo igual ou maior que a execução convencional do algoritmo**, já que todas as seções da matriz são analizadas paralelamente, obtendo desempenho pior que sem as threads. (200 threads ocupando todos os blocos de toda a matriz simultaneamente, por exemplo). 
+
 
 ## GitHub
 :octocat: [MultiThread-ContaPrimosMatriz](https://github.com/Jakiminski/MultiThread-ContaPrimosMatriz/)

@@ -2,10 +2,17 @@
 
 Dada uma matriz de números naturais aleatórios verificar quantos números primos existem e contabilizar o tempo necessário para realizar esta computação. Veja na íntegra o [contexto de implementação](./contexto.pdf) do referido programa.
 
+Máquina
+Notebook Acer Aspire V3
+Processador Intel Core i7-3632QM @2.2GHz x 8
+8GBs RAM
+500GB HD
+Ubuntu 18.04.3 LTS 64 bits / Windows 10 64 bits
+
 ## Compilação
 :bowtie: 
 Foi usado o compilador de C++ *g++ (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0* (Ubuntu). Pode-se também usar o compilador *g++ (tdm-1) 4.9.2* (Windows) ou similar para gerar o arquivo executável na sua máquina. No seu terminal, compile o programa usando o seguinte comando no diretório onde se encontra o código-fonte:
-Windows: ```g++ main.cpp count.cpp util.cpp -o run -lpthread```.
+Windows: ```g++ main.cpp count.cpp util.cpp -o ContaPrimosMatriz -lpthread```.
 Linux:  ```g++ -o ContaPrimosMatriz main.cpp util.cpp count.cpp -lpthread```.
 Uma vez compilado, rode o arquivo executável com o nome ```ContaPrimosMatriz``` ou equivalente na sua máquina.
 
@@ -27,6 +34,12 @@ Uma vez compilado, rode o arquivo executável com o nome ```ContaPrimosMatriz```
 - [X] Definir qnt. de Threads e atuação de cada uma (vide parâmetros)
 - [X] Medir tempo de processador serial
 - [X] Medir tempo de processador para as threads
+
+## Issues
+- Parametrização do Número de Threads não foi implementada de fato. Criou-se uma thread por bloco da matriz, pois quando uma thread percorre mais de um bloco ocorre um dos dois problemas, que não foram solucionados corretamente:
+1. A última coluna de blocos não tem todos os elementos contados.
+2. Todos os elementos são contados, porém ocorre falha de segmentação. 
+
 
 ## GitHub
 :octocat: [MultiThread-ContaPrimosMatriz](https://github.com/Jakiminski/MultiThread-ContaPrimosMatriz/)

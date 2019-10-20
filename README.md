@@ -44,5 +44,11 @@ Uma vez compilado, rode o arquivo executável com o nome ```ContaPrimosMatriz```
 ## GitHub
 :octocat: [MultiThread-ContaPrimosMatriz](https://github.com/Jakiminski/MultiThread-ContaPrimosMatriz/)
 
-## *GNU's Processor Time Analysis*
-* [The GNU C Library -Date and Time](https://www.gnu.org/software/libc/manual/html_node/Date-and-Time.html).
+## Sources
+
+#### Sites
+* [CPlusPlus.com](http://www.cplusplus.com/)
+* [GNU's Processor Time Analysis](https://www.gnu.org/software/libc/manual/html_node/Date-and-Time.html)
+
+#### Livros
+* Sistemas Operacionais Modernos - Tanenbaum - Cap. 2, 4ª Edição.

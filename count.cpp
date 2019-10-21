@@ -9,13 +9,13 @@ extern int sTempo, pTempo;
 //Conta Numeros Primos em Intervalos
 int countPrime(unsigned x0, unsigned x1, unsigned y0, unsigned y1){
 	int sum = 0;
-    for (unsigned i=x0; i<x1; i++){
-        for (unsigned j=y0; j<y1; j++){
-            sum += isPrime(matriz[i][j]);
-        }
-    }	
+    	for (unsigned i=x0; i<x1; i++){
+		for (unsigned j=y0; j<y1; j++){
+			sum += isPrime(matriz[i][j]);
+			    
+		}
+	}	
 	return sum;
-	cout << "\nCount!\n";
 }
 
 
@@ -74,11 +74,10 @@ void primeNumCountParallel(void){
  			yPrev = b[numThreads].y;
 
 			status = pthread_create(&threads[numThreads],NULL,rotina,&b[numThreads]);
-			
 			assert(!status);			
 			
 			numThreads++;
-			cout << numThreads << " threads criadas ." << endl; 
+			//cout << numThreads << " threads criadas ." << endl; 
 		}
 	}
 	/**/
@@ -104,15 +103,15 @@ void* rotina(void* args){
 	unsigned x1 = (b->x) + HEIGHT;
 	unsigned y1 = (b->y) + WIDTH;
 	int status;
-	cout << "* " << b->threadId << " thread works" << endl;
 
-	/**/
 	while(TRUE){
-		cout << "* " << b->threadId << " changed block" << endl;
-		sum += countPrime(b->x, x1, b->y, y1);
-		/**/
 		// Situação crítica: Definir próximo bloco da matriz
 		pthread_mutex_lock(&idx);
+		sum += countPrime(b->x, x1, b->y, y1);
+#if PRINT
+		cout << "(" << b->x << ", " << b->y << ") -> (" << x1 << ", " << y1 << ")" << endl; 
+#endif
+		
  		// Definir próximo bloco da matriz
 		if (yPrev + WIDTH < M_WIDTH){
 			b->y = yPrev + WIDTH;
@@ -131,9 +130,8 @@ void* rotina(void* args){
 			break;
 
 		}
-		/**/
+
 	}	
-	/**/
 
 	// Entrando na Área Crítica
 	pthread_mutex_lock(&mutex); 
@@ -142,7 +140,6 @@ void* rotina(void* args){
 	contaPrimos += sum;
 	// Saindo da Área Crítica
 	pthread_mutex_unlock(&mutex);
-
 
 
 	pthread_exit(NULL); // Encerra Thread

@@ -16,6 +16,22 @@ Foi usado o compilador de C++ *g++ (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0* (Ubunt
 * Linux:  ```g++ -o ContaPrimosMatriz main.cpp util.cpp count.cpp -lpthread```.
 Uma vez compilado, rode o arquivo executável com o nome ```ContaPrimosMatriz``` ou equivalente na sua máquina.
 
+## Parâmetros
+Vá para o arquivo ```macros.hpp```, onde as dimensões da matriz e das submatrizes podem ser alterados, através de pre-compilação de diretivas ```#define```.  Edite **apenas** o seguinte trecho: 
+```
+// MATRIZ
+	#define M_HEIGHT (unsigned) 2000 // Altura da Matriz
+	#define M_WIDTH (unsigned) 1500 // Largura da Matriz
+    	
+	
+	// BLOCOS DA MATRIZ (Threads)
+	// (x e y estão trocados no plano cartesiano)
+	//Obs: M_SIZE deve ser divisivel por HEIGHT e WIDTH
+  #define MAX_THREADS 6 // Qnt. Máxima de Threads
+	#define HEIGHT (unsigned) 4 // Altura 
+	#define WIDTH (unsigned) 3 // Largura
+```
+
 ## Licença
 [GNU General Public License v3.0](/LICENSE)
 
@@ -36,11 +52,9 @@ Uma vez compilado, rode o arquivo executável com o nome ```ContaPrimosMatriz```
 - [X] Medir tempo de processador para as threads
 
 ## Issues
-- Parametrização do Número de Threads não foi implementada de fato. **Foi criada  uma thread para cada bloco da matriz**, pois quando uma thread percorre mais de um bloco ocorre um dos dois problemas, que não foram solucionados corretamente (vide _branch_ 'separate-threads'):
-1. A última coluna de blocos não tem todos os elementos contados.
-2. Todos os elementos são contados, porém ocorre falha de segmentação. 
-Dessa forma, no quesito tempo, há um efeito totalmente indesejado: **a atual execução com threads passa a ter um tempo igual ou maior que a execução convencional do algoritmo**, já que todas as seções da matriz são analizadas paralelamente, obtendo desempenho pior que sem as threads. (200 threads ocupando todos os blocos de toda a matriz simultaneamente, por exemplo). 
-
+- Parametrização do Número de Threads possui um bug, pois quando uma thread percorre mais de um bloco ocorre um dos dois efeitos colaterais, que não puderam ser solucionados corretamente:
+1. A última coluna de blocos não tem todos os elementos contados; OU
+2. Todos os elementos são contados, porém ocorre falha de segmentação.  
 
 ## GitHub
 :octocat: [MultiThread-ContaPrimosMatriz](https://github.com/Jakiminski/MultiThread-ContaPrimosMatriz/)

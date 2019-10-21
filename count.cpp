@@ -9,13 +9,13 @@ extern int sTempo, pTempo;
 //Conta Numeros Primos em Intervalos
 int countPrime(unsigned x0, unsigned x1, unsigned y0, unsigned y1){
 	int sum = 0;
-    for (unsigned i=x0; i<x1; i++){
-        for (unsigned j=y0; j<y1; j++){
-            sum += isPrime(matriz[i][j]);
-        }
-    }	
+    	for (unsigned i=x0; i<x1; i++){
+		for (unsigned j=y0; j<y1; j++){
+			sum += isPrime(matriz[i][j]);
+			    
+		}
+	}	
 	return sum;
-	cout << "\nCount!\n";
 }
 
 
@@ -41,50 +41,51 @@ void primeNumCountSerial(void){
 //
 
 //Thread
-pthread_mutex_t mutex;
+pthread_mutex_t mutex, idx;
 unsigned xPrev, yPrev;
-int numThreads = (int) (M_HEIGHT*M_WIDTH)/(HEIGHT*WIDTH);
 
 
 void primeNumCountParallel(void){
 
     	contaPrimos = 0; // Reseta Contador
 
-	pthread_t* threads = new pthread_t [numThreads];
-	BlocoArgs* b = new BlocoArgs [numThreads];
-	numThreads = 0; 
-	int k = 0;// Conta Threads; k <= numThreads
+	pthread_t* threads = new pthread_t [MAX_THREADS];
+	BlocoArgs* b = new BlocoArgs [MAX_THREADS];
+	int numThreads = 0; // Conta Threads [0,MAX_THREADS]
 	int status;
 	// Threads, respectivas rotinas e o(s) Mutex(es)
 	
-	//Inicializa mutex
+	//Inicializa mutexes
 	pthread_mutex_init(&mutex,NULL);
-
+	pthread_mutex_init(&idx,NULL);
 	
 	// Cria Threads
-	pTempo = time(NULL);	
+	pTempo = time(NULL);
+		
 	for (int i=0; i<M_HEIGHT; i+=HEIGHT){
 		for (int j=0; j<M_WIDTH; j+=WIDTH){
 			// BlocoArgs; submatriz por thread
 			
-			k = numThreads;
-			b[k].x = i;
-			b[k].y = j;
-			b[k].threadId = k;
-			xPrev = b[k].x, yPrev = b[k].y;
-			status = pthread_create(&threads[k],NULL,rotina,&b[k]);
-			if (status){
-				exit(-1);			
-			}
+			b[numThreads].x = i;
+			b[numThreads].y = j;
+			b[numThreads].threadId = numThreads;
+			
+			xPrev = b[numThreads].x;
+ 			yPrev = b[numThreads].y;
+
+			status = pthread_create(&threads[numThreads],NULL,rotina,&b[numThreads]);
+			assert(!status);			
+			
 			numThreads++;
 			//cout << numThreads << " threads criadas ." << endl; 
 		}
 	}
+	/**/
 	//cout << "Total de Threads: " << numThreads << endl;
 
 	
 
-	for (k=0; k<numThreads; k++){
+	for (int k=0; k<numThreads; k++){
 		pthread_join(threads[k],NULL);
 	}
 	pTempo = time(NULL) - pTempo;
@@ -102,15 +103,44 @@ void* rotina(void* args){
 	unsigned x1 = (b->x) + HEIGHT;
 	unsigned y1 = (b->y) + WIDTH;
 	int status;
-	//cout << "* " << b->threadId << " thread works" << endl;
-	
+
+	while(TRUE){
+		// Situação crítica: Definir próximo bloco da matriz
+		pthread_mutex_lock(&idx);
+		sum += countPrime(b->x, x1, b->y, y1);
+#if PRINT
+		cout << "(" << b->x << ", " << b->y << ") -> (" << x1 << ", " << y1 << ")" << endl; 
+#endif
+		
+ 		// Definir próximo bloco da matriz
+		if (yPrev + WIDTH < M_WIDTH){
+			b->y = yPrev + WIDTH;
+			yPrev += WIDTH;
+			pthread_mutex_unlock(&idx); // Desbloquear mutex idx
+
+		}else if (xPrev + HEIGHT < M_HEIGHT){
+			b->x = xPrev + HEIGHT;
+			xPrev += HEIGHT; 
+			b->y = 0;
+			yPrev = 0;
+			pthread_mutex_unlock(&idx); // Desbloquear mutex idx
+				
+		}else{
+			pthread_mutex_unlock(&idx); // Desbloquear mutex idx
+			break;
+
+		}
+
+	}	
+
 	// Entrando na Área Crítica
 	pthread_mutex_lock(&mutex); 
 	// Acesso à memória compartilhada: matriz e contador
-	sum += countPrime(b->x, x1, b->y, y1);
+	
 	contaPrimos += sum;
 	// Saindo da Área Crítica
 	pthread_mutex_unlock(&mutex);
+
 
 	pthread_exit(NULL); // Encerra Thread
 } 

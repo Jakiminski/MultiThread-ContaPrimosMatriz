@@ -3,7 +3,7 @@
 
 
     // Boolean
-    #ifdef TRUE
+    	#ifdef TRUE
 	#undef TRUE
 	#endif// TRUE undef
 	#ifndef TRUE
@@ -32,14 +32,15 @@
 	
 	// MATRIZ
 	#define M_HEIGHT (unsigned) 2000 // Altura da Matriz
-	#define M_WIDTH (unsigned) 1000 // Largura da Matriz
+	#define M_WIDTH (unsigned) 1500 // Largura da Matriz
     	
 	
 	// BLOCOS DA MATRIZ (Threads)
 	// (x e y estão trocados no plano cartesiano)
 	//Obs: M_SIZE deve ser divisivel por HEIGHT e WIDTH
-	#define HEIGHT (unsigned) 100 // Altura 
-	#define WIDTH (unsigned) 200 // Largura
+        #define MAX_THREADS 6 // Qnt. Máxima de Threads
+	#define HEIGHT (unsigned) 4 // Altura 
+	#define WIDTH (unsigned) 3 // Largura
 
 	// NÚMEROS ALEATÓRIOS
 	#define RND_RNG (unsigned) 29999 // Tamanho do intervalo de valores aleatórios

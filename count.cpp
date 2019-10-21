@@ -41,7 +41,7 @@ void primeNumCountSerial(void){
 //
 
 //Thread
-pthread_mutex_t mutex;
+pthread_mutex_t mutex, idx;
 unsigned xPrev, yPrev;
 
 
@@ -55,9 +55,9 @@ void primeNumCountParallel(void){
 	int status;
 	// Threads, respectivas rotinas e o(s) Mutex(es)
 	
-	//Inicializa mutex
+	//Inicializa mutexes
 	pthread_mutex_init(&mutex,NULL);
-
+	pthread_mutex_init(&idx,NULL);
 	
 	// Cria Threads
 	pTempo = time(NULL);
@@ -69,11 +69,14 @@ void primeNumCountParallel(void){
 			b[numThreads].x = i;
 			b[numThreads].y = j;
 			b[numThreads].threadId = numThreads;
-			xPrev = b[numThreads].x, yPrev = b[numThreads].y;
+			
+			xPrev = b[numThreads].x;
+ 			yPrev = b[numThreads].y;
+
 			status = pthread_create(&threads[numThreads],NULL,rotina,&b[numThreads]);
-			if (status){
-				exit(-1);			
-			}
+			
+			assert(!status);			
+			
 			numThreads++;
 			cout << numThreads << " threads criadas ." << endl; 
 		}
@@ -101,15 +104,46 @@ void* rotina(void* args){
 	unsigned x1 = (b->x) + HEIGHT;
 	unsigned y1 = (b->y) + WIDTH;
 	int status;
-	//cout << "* " << b->threadId << " thread works" << endl;
-	
+	cout << "* " << b->threadId << " thread works" << endl;
+
+	/**/
+	while(TRUE){
+		cout << "* " << b->threadId << " changed block" << endl;
+		sum += countPrime(b->x, x1, b->y, y1);
+		/**/
+		// Situação crítica: Definir próximo bloco da matriz
+		pthread_mutex_lock(&idx);
+ 		// Definir próximo bloco da matriz
+		if (yPrev + WIDTH < M_WIDTH){
+			b->y = yPrev + WIDTH;
+			yPrev += WIDTH;
+			pthread_mutex_unlock(&idx); // Desbloquear mutex idx
+
+		}else if (xPrev + HEIGHT < M_HEIGHT){
+			b->x = xPrev + HEIGHT;
+			xPrev += HEIGHT; 
+			b->y = 0;
+			yPrev = 0;
+			pthread_mutex_unlock(&idx); // Desbloquear mutex idx
+				
+		}else{
+			pthread_mutex_unlock(&idx); // Desbloquear mutex idx
+			break;
+
+		}
+		/**/
+	}	
+	/**/
+
 	// Entrando na Área Crítica
 	pthread_mutex_lock(&mutex); 
 	// Acesso à memória compartilhada: matriz e contador
-	sum += countPrime(b->x, x1, b->y, y1);
+	
 	contaPrimos += sum;
 	// Saindo da Área Crítica
 	pthread_mutex_unlock(&mutex);
+
+
 
 	pthread_exit(NULL); // Encerra Thread
 } 

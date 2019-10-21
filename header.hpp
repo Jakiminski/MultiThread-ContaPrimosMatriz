@@ -2,12 +2,12 @@
 #define _HDR_HPP_
 
 	#include <iostream>
-    #include <string>
-    #include <cstdlib>
+    	#include <string>
+   	#include <cstdlib>
 	#include <clocale>
-    #include <ctime>
-    #include <cassert>
-    #include <pthread.h>
+    	#include <ctime>
+   	#include <cassert>
+   	#include <pthread.h>
 
 	#include "macros.hpp"
 	#include "util.hpp"

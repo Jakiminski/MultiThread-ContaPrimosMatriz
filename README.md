@@ -17,7 +17,7 @@ Foi usado o compilador de C++ *g++ (Ubuntu 7.4.0-1ubuntu1~18.04.1) 7.4.0* (Ubunt
 Uma vez compilado, rode o arquivo executável com o nome ```ContaPrimosMatriz``` ou equivalente na sua máquina.
 
 ## Parâmetros
-Vá para o arquivo ```macros.hpp```, onde as dimensões da matriz e das submatrizes podem ser alterados, através de pre-compilação de diretivas ```#define```.  Edite **apenas** o seguinte trecho: 
+Vá para o arquivo [```macros.hpp```](./macros.hpp), onde as dimensões da matriz e das submatrizes podem ser alterados, através de pre-compilação de diretivas ```#define```.  Edite **apenas** o seguinte trecho: 
 ```
 // MATRIZ
 	#define M_HEIGHT (unsigned) 2000 // Altura da Matriz
@@ -27,7 +27,7 @@ Vá para o arquivo ```macros.hpp```, onde as dimensões da matriz e das submatri
 	// BLOCOS DA MATRIZ (Threads)
 	// (x e y estão trocados no plano cartesiano)
 	//Obs: M_SIZE deve ser divisivel por HEIGHT e WIDTH
-  #define MAX_THREADS 6 // Qnt. Máxima de Threads
+	#define MAX_THREADS 6 // Qnt. Máxima de Threads
 	#define HEIGHT (unsigned) 4 // Altura 
 	#define WIDTH (unsigned) 3 // Largura
 ```
